@@ -4,12 +4,15 @@ Lab Assignments for CSAPP
 
 运行环境：
 
-- Ubuntu 18.04 in Docker
-- gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
-
-（Ubuntu 20.04 & Ubuntu in WSL2 不支持 32 位程序，[解决办法](https://stackoverflow.com/questions/42120938/exec-format-error-32-bit-executable-windows-subsystem-for-linux)）
+- Linux version 5.10.102.1-microsoft-standard-WSL2
+- gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0
 
 ## 1. Datalab
+
+- 对应章节：第二章
+- 需要的知识
+  - 整数、浮点数在计算机中如何表示、存储、运算
+  - 按位运算符 `!^~&`、逻辑运算符 `&& ||`
 
 可能需要的前置：
 
@@ -35,4 +38,30 @@ $ ./btest
 # 自己写的脚本，包含上面三行
 $ ./my_test.sh
 ```
+
+## 2. Bomb
+
+- 对应章节：第三章
+  - [笔记](Notes/CH3.md)
+
+- 需要的知识：
+  - 汇编基础知识：16 个寄存器的用处，指令的运算、操作、移动
+  - 使用 gdb 阅读汇编代码，能够反汇编出原来的 C 语言代码。
+    - [gdb 笔记](https://github.com/Levantespot/Cheatsheets/blob/main/GCC%26G%2B%2B%26GDB.md)
+- [解决过程](Notes/bomb.md)（第六题没做完）
+
+```
+$ gdb bomb
+(gbd) b 74		// phase 1
+(gbd) b 82		// phase 2
+(gbd) b 89		// phase 3
+(gbd) b 95		// phase 4
+(gbd) b 101		// phase 5
+(gbd) b 108		// phase 6
+r < ans.txt	// ans.txt 存放答案，每行一个 phase 的答案
+```
+
+
+
+
 
